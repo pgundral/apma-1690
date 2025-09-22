@@ -1,6 +1,7 @@
 ## PRANAV GUNDRALA ## APMA1690 ## FALL 2025 ##
 import numpy as np
 from numpy import random
+from matplotlib import pylab as plt
 
 def compute_pi(N:int, seed:int=42):
     random.seed(seed)
@@ -12,3 +13,10 @@ def compute_pi(N:int, seed:int=42):
     pi = (C.shape[0]/N)*4
 
     return pi
+
+N = range(50, 5050, 50)
+estimates = [compute_pi(n) for n in N]
+
+plt.scatter(N, estimates)
+
+plt.show()
