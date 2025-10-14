@@ -1,0 +1,104 @@
+% Hello! This is a template you may use to LaTeX your APMA 1690 assignments. It is by no means mandatory to use this specific template (but it IS mandatory to use LaTeX).
+
+% Many good LaTeX tools exist, but I recommend starting with Overleaf, as it is accessible online (no need to download anything) and quite user-friendly. 
+
+% The basic examples under Problem 1 should suffice for you to write much of your homework solutions. Supplemental resources are suggested under Problem 2.
+
+% The first part of a .tex file is a bit analogous to the part of a code where you import libraries at the beginning. All lines that start with \usepackage have that role.
+
+\documentclass[12pt]{article} 
+\renewcommand{\baselinestretch}{1.0} % Line spacing can be changed here!
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{comment}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\lstset{language=Python, numbers=left, basicstyle=\ttfamily}
+
+% This part (which can be deleted entirely if you want) adds the page number and header on each page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\fancyhead[L]{APMA 1690: Pranav Gundrala} % Left side of the header
+\fancyhead[R]{HW 3} % Right side of the header
+\fancyfoot[C]{\thepage} % Page numbers at the bottom, centered (C)
+
+\begin{document}
+
+\section*{Homework 3} % This displays the title in larger font
+
+\subsection*{Problem 1} % Idem, but slightly smaller font
+To compute the following by hand, we can consider the definition of $a$ mod $m$ as 
+$a - \lfloor\frac{a}{m}\rfloor m$.
+
+a. \[3 \; mod \; 7 = 3 - \lfloor\frac{3}{7}\rfloor \cdot7 = 3\]
+
+b. \[7 \; mod \; 7 = 7 - \lfloor\frac{7}{7}\rfloor \cdot7 = 0\]
+
+c. \[10 \; mod \; 7 = 10 - \lfloor\frac{10}{7}\rfloor \cdot7 = 3\]
+
+d. 
+\begin{align*}
+    10^9 \; mod \; 7 &= 10^9 - \lfloor\frac{10^9}{7}\rfloor \cdot7 \\
+    &= 10^9 - \lfloor(\frac{10}{7^{1/9}})^9\rfloor \cdot7
+\end{align*} 
+
+\
+
+The expression inside this sum corresponds to the Taylor Series expansion of the exponential function, where $e^x = \sum_{n=0}^\infty\frac{x^n}{n!}$.
+
+\begin{align*}
+e^{-\lambda}\sum _{k=0}^\infty\frac{(e^{it}\lambda)^k}{k!} 
+&=  e^{-\lambda}e^{e^{it}\lambda } \\
+&= e^{\lambda(e^{it} - 1)}
+\end{align*}
+
+(B) Given an Exponential random variable X with parameter $\lambda > 0$ on $[0,\infty]$, the probability density function (pdf) is described by
+\[p_X(x)=\lambda e^{-\lambda x}\]
+
+The characteristic function (for a continuous variable) can be derived as follows:
+\begin{align*}
+\psi_X(t) = E[e^{itX}] &= \int_{0}^\infty e^{itx}p_X(x)dx \\
+&= \int_{0}^\infty e^{itx}\lambda e^{-\lambda x}dx \\
+&= \lambda\Bigg[\int_{0}^\infty e^{x(it - \lambda)}dx\Bigg]
+\end{align*}
+
+% If you prefer that the next problem starts on a new page, write \newpage as follows
+\newpage
+
+Recognizing the integral as the form $\int_0^\infty e^{-ax}dx$ where $-a = {\lambda-it}$, we can evaluate as
+
+\begin{align*}
+\lambda\Bigg[\int_{0}^\infty e^{x(it - \lambda)}\Bigg] 
+&= \lambda\Bigg[\frac{1}{\lambda-it}\Bigg] \\
+&= \frac{\lambda}{\lambda-it}
+\end{align*}
+
+(C) X, Y are independent random variables with characteristic functions $\psi_X$ and $\psi_Y$. $\psi_{(X,Y)}$ is the characteristic function from $\mathbb{R}^2 \rightarrow \mathbb{R}$ of the vector $(X, Y)$:
+
+\[
+\psi_{(X,Y)}(s,t) \;=\; \mathbb{E}\!\left[ e^{\,i (s,t)\cdot (X,Y)} \right]
+\]
+
+We must prove that
+
+\[
+\psi_{(X,Y)}(s,t) \;=\; \psi_X(s)\,\psi_Y(t)
+\]
+
+Given that X and Y are independent, by definition a joint expectation of a function on both variables can decompose into the product of the marginal expectations. We can say that
+
+\begin{align*}
+\mathbb{E}\!\left[ e^{\,i (s,t)\cdot (X,Y)} \right] 
+&= E[e^{isX}]E[e^{isY}] \\
+&= \psi_X(s)\,\psi_Y(t)
+\end{align*}
+
+\newpage
+\subsection*{Problem 2}
+
+
+
+\end{document} % Every \begin command must come with a corresponding \end !
